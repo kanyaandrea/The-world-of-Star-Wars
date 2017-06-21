@@ -1,6 +1,6 @@
 
 window.onload = function() { 
-    getPlanets(url);
+    getPlanets('http://swapi.co/api/planets');
     document.getElementById("nextbutton").addEventListener("click", function(){
         var url = document.getElementById("nextbutton").getAttribute("class");
         var table = document.getElementById("planets")
@@ -10,9 +10,9 @@ window.onload = function() {
     document.getElementById("previousbutton").addEventListener("click", function(){
         var url = document.getElementById("previousbutton").getAttribute("class");
         if (url = "null") {
-            url = "http://swapi.co/api/planets";
             alert("No previous page.");
-            main(url);  
+            url = "http://swapi.co/api/planets";
+            //getPlanets(url); nem kell
         }
         var table = document.getElementById("planets")
         table.innerHTML= ""
@@ -29,12 +29,12 @@ function getPlanets(url){
     if (request.status >= 200 && request.status < 400) { // successful response
         var data = JSON.parse(request.responseText);
         var planetCount = data['count'];
-        var nextPage = data.next;
+        var nextPage = data["next"];
         var nextButton = document.getElementById("nextbutton");
-        nextButton.setAttribute("class", nextButton)
-        var previousPage = data.previous;
+        nextButton.setAttribute("class", nextButton);
+        var previousPage = data["previous"];
         var previousButton = document.getElementById("previousbutton");
-        previousButton.setAttribute("class", previousButton) //
+        previousButton.setAttribute("class", previousButton); //
 
         for (let i = 0; i < 10; i++) {
             var planetName = data['results'][i]["name"];
@@ -46,7 +46,7 @@ function getPlanets(url){
 
             var row = document.createElement("tr")
             row.setAttribute("id", i);
-            document.getElementById("mytable").appendChild(row);
+            document.getElementById("planets").appendChild(row);
             
             var cell = document.createElement("td");
             var text = document.createTextNode(planetName);
@@ -70,12 +70,12 @@ function getPlanets(url){
             document.getElementById(i).appendChild(x);
 
             var x = document.createElement("td");
-            var t = document.createTextNode(waterPercentage);
+            var t = document.createTextNode(planetWaterPercent);
             x.appendChild(t);
             document.getElementById(i).appendChild(x);
 
             var x = document.createElement("td");
-            var t = document.createTextNode(population);
+            var t = document.createTextNode(planetPopulation);
             x.appendChild(t);
             document.getElementById(i).appendChild(x);
             }
