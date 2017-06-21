@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title> {{ title }} </title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">-->
+         <script type="text/javascript" src="{{ url_for('static', filename='js/planets.js') }}" defer></script>
+    </head>
+    </head>
+
+    <body>
+        <h1> {{ title }} </h1>
+        <body>  
+        <button id="previosbutton"> Previous </button>
+        <button id="nextbutton"> Next </button>   <!-- add data-url attributum: url next and previous from swapi-->
+        <table>
+            <!--<thead>
+                <tr>
+                {% for column in tabletitle %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+                </tr>        
+            </thead>-->
+            <tbody id="planets">
+            </tbody>
+        </table>
+
+
+           <!-- {% for row in table %}
+                <tr>
+                    {% for column in row %}
+                        <td>{{ column }} </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}-->
+    </body>
+</html>
+
