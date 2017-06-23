@@ -1,41 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
+<html>
+   <head>
         <meta charset="UTF-8">
         <title> {{ title }} </title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!--<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">-->
-         <script type="text/javascript" src="{{ url_for('static', filename='js/planets.js') }}" defer></script>
-    </head>
-    </head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 
+    </head> 
     <body>
         <h1> {{ title }} </h1>
-        <body>  
-        <button id="previousbutton"> Previous </button>
-        <button id="nextbutton"> Next </button>   <!-- add data-url attributum: url next and previous from swapi-->
+        <button type="button" id="previous"> previous </button>
+        <button type="button" id="next"> next </button>
+        <br>
+        <br>
+        <hr>
+
+        <div class="container">
+            
+        <!-- Trigger the modal with a button generated with JavaScript 
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+        <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">        
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>name</th>
+                                        <th>height</th>
+                                        <th>mass</th>
+                                        <th>haircolor</th>
+                                        <th>skincolor</th>
+                                        <th>eyecolor</th>
+                                        <th>year</th>
+                                        <th>gender</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody id="modaltable">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="modalclosebutton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
         <table>
-            <!--<thead>
+            <thead>
                 <tr>
-                {% for column in tabletitle %}
-                    <th>{{ column }}</th>
+                {% for item in tabletitle %}
+                    <th>{{ item }}</th>
                 {% endfor %}
                 </tr>        
-            </thead>-->
-            <tbody id="planets">
+            </thead>
+            </thead>
+            <tbody id="mytable">                
             </tbody>
         </table>
-
-
-           <!-- {% for row in table %}
-                <tr>
-                    {% for column in row %}
-                        <td>{{ column }} </td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}-->
-    </body>
+    </body>    
 </html>
-
+    
