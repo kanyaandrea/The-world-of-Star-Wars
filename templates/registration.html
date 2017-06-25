@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <title> Register to Star Wars Universe </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+    </head> 
+
+    <div class="container">
+        <div class="row">
+            <h2>Register to Star Wars Universe</h2> 
+            
+            <form class="form-horizontal" action="/registration" method="POST">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Registration form</legend>
+
+    <!-- Text input-->
+    <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">userame</label>  
+    <div class="col-md-4">
+    <input id="username" name="username" placeholder="Give your usrename" class="form-control input-md" required="" type="text">
+    <span class="help-block"> </span>  
+    </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Password</label>  
+    <div class="col-md-4">
+    <input id="password" name="password" placeholder="give a password" class="form-control input-md" required="" type="text">
+    <span class="help-block"> </span>  
+    </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+    <label class="col-md-4 control-label" for="singlebutton"> </label>
+    <div class="col-md-4">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+    </div>
+    </div>
+
+    </fieldset>
+    </form>
+    
+        </div>
+    </div>
+
+ </html>

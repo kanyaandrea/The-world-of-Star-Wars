@@ -4,7 +4,7 @@ import psycopg2
 
 def connection():
     try:
-        connect_str = personal_config.my_connection()
+        connect_str = personal_connection_config.my_connection()
         # use our connection values to establish a connection
         conn = psycopg2.connect(host=connect_str["host"],
                                 user=connect_str["user"],
@@ -16,9 +16,9 @@ def connection():
     except psycopg2.DatabaseError as e:
         print('Cannot connect to the database.')
         print(e)
-    finally:
-        if connection:
-            connection.close()
+    """finally:
+        if conn:
+            conn.close()"""
 
 
 def run_query(query):
@@ -27,4 +27,3 @@ def run_query(query):
     if "SELECT" in query:
         query_list = cursor.fetchall()
         return query_list
-
