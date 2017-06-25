@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template
-import login
+#import login
 import db_connection
-from login import fetch_data, fetch_data_title
+#from login import fetch_data, fetch_data_title
 #from flask_restful import Resource, Api
 #import os
 #import sys
@@ -14,8 +14,9 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
     title = "Planets of Star Wars Universe"
-    tabletitle = ["Name", "Diameter (km)", "Climate", "Terrain", "Surface water (%)", "Population"]
-    return render_template("index.html", title=title, tabletitle=tabletitle)
+    tabletitle = ["Name", "Diameter (km)", "Climate", "Terrain", "Surface water (%)", "Population", "Residents"]
+    modaltabletitle = ["Name", "Height", "Mass(kg)", "Skin color", "Hair Color", "Eye Color", "Birth Year", "Gender"]
+    return render_template("index.html", title=title, tabletitle=tabletitle, modaltabletitle=modaltabletitle)
 
 
 @app.route('/login')
