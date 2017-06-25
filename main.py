@@ -39,5 +39,5 @@ def get_users():
     return render_template("general.html", table=users, tabletitle="Users", title="Registrated users")
 
 
-'''if __name__ == "__main__":
-    app.run(debug=True)'''
+if __name__ == "__main__":
+    app.run()
