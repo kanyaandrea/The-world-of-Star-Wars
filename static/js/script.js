@@ -55,12 +55,16 @@ function nextAndPreviousPages(data){
 function createTableWithData(data) {
     for (var i = 0; i < 10; i++) {              
     var planetName = data['results'][i]["name"];
-    var planetDiameter = data['results'][i]["diameter"];
+    var planetDiameterRaw = data['results'][i]["diameter"];
+    var planetDiameter = planetDiameterRaw + " km"
     var planetClimate = data['results'][i]["climate"];
     var planetTerrain = data['results'][i]["terrain"];
     var waterPercentage = data['results'][i]["surface_water"];
-    var population = data['results'][i]["population"];   
-
+    var populationRaw = data['results'][i]["population"];
+    function numberWithSpace(populationRaw) {
+        return populationRaw.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+    var population = numberWithSpace(populationRaw)
     var row = document.createElement("tr")
     row.setAttribute("id", i);
     document.getElementById("mytable").appendChild(row);
@@ -113,15 +117,25 @@ function residentsListing() {
             if (residentrequest.status >= 200 && residentrequest.status < 400) { // successful response
                 var infoOfPersons = JSON.parse(residentrequest.responseText);
                 var nameOfPerson = infoOfPersons["name"]
-                var heightOfPerson = infoOfPersons["height"]
-                var masOfPerson = infoOfPersons["mass"]
+                var heightOfPersonraw = infoOfPersons["height"]
+                var heightOfPerson = (heightOfPersonraw/100) + ' m'
+                var massOfPersonRaw = infoOfPersons["mass"]
+                function formatedMass(massOfPersonRaw) {
+                    if (massOfPersonRaw !== "unknown") { 
+                        return massOfPersonRaw + " kg"
+                        console.log(massOfPersonRaw)
+
+                    }
+                    return massOfPersonRaw 
+                }
+                var massOfPerson = formatedMass(massOfPersonRaw)
                 var skin_colorOfPerson = infoOfPersons["skin_color"]
                 var hair_colorOfPerson = infoOfPersons["hair_color"]
                 var eye_colorOfPerson = infoOfPersons["eye_color"]
                 var birth_yearOfPerson = infoOfPersons["birth_year"]
                 var genderOfPerson = infoOfPersons["gender"]
                 
-                var personData = [nameOfPerson, heightOfPerson, masOfPerson, skin_colorOfPerson, hair_colorOfPerson, eye_colorOfPerson, birth_yearOfPerson, genderOfPerson]
+                var personData = [nameOfPerson, heightOfPerson, massOfPerson, skin_colorOfPerson, hair_colorOfPerson, eye_colorOfPerson, birth_yearOfPerson, genderOfPerson]
                 var modalrow = document.createElement("tr");
                 document.getElementById("modaltable").appendChild(modalrow);
                 for (let k = 0; k < personData.length; k++){

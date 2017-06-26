@@ -14,8 +14,8 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 @app.route('/')
 def homepage():
     title = "Planets of Star Wars Universe"
-    tabletitle = ["Name", "Diameter (km)", "Climate", "Terrain", "Surface water (%)", "Population", "Residents"]
-    modaltabletitle = ["Name", "Height", "Mass(kg)", "Skin color", "Hair Color", "Eye Color", "Birth Year", "Gender"]
+    tabletitle = ["Name", "Diameter", "Climate", "Terrain", "Surface water (%)", "Population", "Residents"]
+    modaltabletitle = ["Name", "Height", "Mass", "Skin color", "Hair Color", "Eye Color", "Birth Year", "Gender"]
     return render_template("index.html", title=title, tabletitle=tabletitle, modaltabletitle=modaltabletitle)
 
 
@@ -60,23 +60,9 @@ def registration():
         password = request.form['password']
         user = (username, password)
         login.add_new_user(user)
-        return redirect('/')
+        return redirect(url_for('index'))
     return render_template('registration.html')
 
-
-'''@app.route('/')
-def index():
-    if 'username' in session:
-        username = 'Logged in as %s' % escape(session['username'])
-        button = 'Log Out'
-        url = '/logout'
-        return render_template('index.html', value=login_name, button=button, url=url)
-    else:
-        username = ''
-        button = 'Log in'
-        url = '/login'
-        return render_template('index.html', value=login_name, button=button, url=url)
-'''
 
 @app.route('/logout')
 def logout():
