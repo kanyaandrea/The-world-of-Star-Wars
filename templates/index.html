@@ -30,13 +30,13 @@
                     <form id="signin" class="navbar-form navbar-right" role="form">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address">                                        
+                            <input id="username" type="username" class="form-control" name="username" value="{{ username }}" placeholder="Username">                                        
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">                                        
+                            <input id="password" type="password" class="form-control" name="password" value="{{ password }}" placeholder="Password">                                        
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">{{ button }}</button>
                     </form>            
                 </div>
             </div>
@@ -44,8 +44,8 @@
 
   
         <h1> {{ title }} </h1>
-        <button type="button" id="previous" class="btn btn-default"> 10 previous planets </button>
-        <button type="button" id="next" class="btn btn-default"> 10 next planets </button>
+        <button type="button" id="previous"> 10 previous planets </button>
+        <button type="button" id="next"> 10 next planets </button>
         <br>
         <br>
 

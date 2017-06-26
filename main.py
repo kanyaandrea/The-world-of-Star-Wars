@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, render_template, session, escape,
+from flask import Flask, redirect, url_for, request, render_template, session, escape
 import login
 import db_connection
 from login import fetch_data, fetch_data_title
@@ -19,15 +19,10 @@ def homepage():
     return render_template("index.html", title=title, tabletitle=tabletitle, modaltabletitle=modaltabletitle)
 
 
-@app.route('/login')
-def loginpage():
-    title = "Login"
-    return render_template("login.html", title=title)
-
 
 @app.route('/set_cookie')
 def cookie_insertion():
-    redirect_to_index = redirect('/index')
+    redirect_to_index = redirect('/')
     response = current_app.make_response(redirect_to_index)
     response.set_cookie('cookie_name', value='values')
     return response
@@ -64,34 +59,27 @@ def registration():
         username = request.form['username']
         password = request.form['password']
         user = (username, password)
-        sql_queries.add_new_user(user)
+        login.add_new_user(user)
         return redirect('/')
     return render_template('registration.html')
 
 
-@app.route('/')
+'''@app.route('/')
 def index():
     if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
-    return 'You are not logged in'
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        session['username'] = request.form['username']
-        return redirect(url_for('index'))
-    return '''
-        <form method="post">
-            <p><input type=text name=username>
-            <p><input type=submit value=Login>
-        </form>
-    '''
-
+        username = 'Logged in as %s' % escape(session['username'])
+        button = 'Log Out'
+        url = '/logout'
+        return render_template('index.html', value=login_name, button=button, url=url)
+    else:
+        username = ''
+        button = 'Log in'
+        url = '/login'
+        return render_template('index.html', value=login_name, button=button, url=url)
+'''
 
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
 

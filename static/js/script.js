@@ -36,7 +36,7 @@ function modalBodyDelete(){
 
 
 function nextAndPreviousPages(data){
-    var nextUrl = data["previous"];
+    var nextUrl = data["next"];
     var nextbutton = document.getElementById("next");
     nextbutton.setAttribute("class", nextUrl);
     
