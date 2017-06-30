@@ -1,4 +1,25 @@
-var input = prompt("Please enter a password");
+console.log(document.forms.namedItem("password").value)
+
+
+
+function validateUsername(){
+var username=document.forms["login"]["username"].value;
+if (username==null || username==""){
+  alert("Please fill out the username");
+  return false;
+} 
+}
+
+function validatePassword(){
+var password=document.forms["login"]["password"].value;
+if (username==null || username==""){
+  alert("Please fill out the username");
+  return false;
+}
+else {
+  isPasswordValid(password);
+}
+}
 
 
 function hasUppercase(input) {
@@ -55,4 +76,4 @@ function isPasswordValid(input) {
 }
 
 
-isPasswordValid(input);
+
