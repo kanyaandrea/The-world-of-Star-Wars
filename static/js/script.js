@@ -2,6 +2,7 @@
 window.onload = function(){ 
     var swapi_link = "http://swapi.co/api/planets"
     var swapi_linkHTTPS = swapi_link.replace("http", "https");
+    
     main(swapi_linkHTTPS);
     nextPage();
     previousPage();
