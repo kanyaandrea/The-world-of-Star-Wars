@@ -1,4 +1,4 @@
-import personal_connection_config
+
 import psycopg2
 import os
 import urllib
