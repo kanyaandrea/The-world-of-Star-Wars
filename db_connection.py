@@ -1,15 +1,19 @@
 import personal_connection_config
 import psycopg2
-
+import os
+import urllib
 
 def connection():
     try:
-        connect_str = personal_connection_config.my_connection()
-        # use our connection values to establish a connection
-        conn = psycopg2.connect(host=connect_str["host"],
-                                user=connect_str["user"],
-                                password=connect_str["passwd"],
-                                dbname=connect_str["dbname"])
+        urllib.parse.uses_netloc.append('postgres')
+        url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
+        connection = psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port
+        )
         conn.autocommit = True
         cursor = conn.cursor()
         return cursor

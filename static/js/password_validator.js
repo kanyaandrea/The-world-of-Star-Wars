@@ -1,5 +1,3 @@
-console.log(document.forms.namedItem("password").value)
-
 
 
 function validateUsername(){

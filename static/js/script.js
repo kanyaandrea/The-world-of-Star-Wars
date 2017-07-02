@@ -1,6 +1,6 @@
 
 window.onload = function(){ 
-    main('http://swapi.co/api/planets');
+    main('https://swapi.co/api/planets');
     nextPage();
     previousPage();
     modalBodyDelete();
@@ -37,12 +37,14 @@ function modalBodyDelete(){
 
 function nextAndPreviousPages(data){
     var nextUrl = data["next"];
+    var nextUrlHTTPS = nextUrl.replace("http", "https");
     var nextbutton = document.getElementById("next");
-    nextbutton.setAttribute("class", nextUrl);
+    nextbutton.setAttribute("class", nextUrlHTTPS);
     
     var prevUrl = data["previous"];
+    var prevUrlHTTPS = prevUrl.replace("http", "https");
     var prevbutton = document.getElementById("previous");           
-    prevbutton.setAttribute("class", prevUrl);
+    prevbutton.setAttribute("class", prevUrlHTTPS);
     /*if (prevUrl === null) {
         document.getElementById("previous").setAttribute("disabled","disabled");
     } 
@@ -111,7 +113,8 @@ function residentsListing() {
     for (let UrlOfResident = 0; UrlOfResident < allPersonsAsUrls.length; UrlOfResident++) {                     
         let residentrequest = new XMLHttpRequest();
         var personsUrl = allPersonsAsUrls[UrlOfResident]
-        residentrequest.open('GET', personsUrl, true);
+        var personsUrlHTTPS = personsUrl.replace("http", "https");
+        residentrequest.open('GET', personsUrlHTTPS, true);
         residentrequest.onload = function() {
 
             if (residentrequest.status >= 200 && residentrequest.status < 400) { // successful response
@@ -123,8 +126,6 @@ function residentsListing() {
                 function formatedMass(massOfPersonRaw) {
                     if (massOfPersonRaw !== "unknown") { 
                         return massOfPersonRaw + " kg"
-                        console.log(massOfPersonRaw)
-
                     }
                     return massOfPersonRaw 
                 }
@@ -162,7 +163,7 @@ function main(url){
            
             var array = document.getElementsByClassName("residentsbutton");
             for (let l = 0; l < array.length; l++) {
-            array[l].addEventListener('click', residentsListing, false);                
+                array[l].addEventListener('click', residentsListing, false);                
             }
         }
     }
